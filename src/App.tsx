@@ -21,7 +21,7 @@ function App() {
         <div className="App">
             <div className="gallery">
                 {images.map(image => (
-                    <img src={image} alt="gallery-item" className="gallery-card"></img>
+                    <div style={{backgroundImage: `url(${image})`}} className="gallery-card"></div>
                 ))}
             </div>
         </div>
