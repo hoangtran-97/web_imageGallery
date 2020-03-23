@@ -7,7 +7,13 @@ const images: string[] = [
     "https://source.unsplash.com/300x300/?game",
     "https://source.unsplash.com/300x300/?nintendo",
     "https://source.unsplash.com/300x300/?food",
-    "https://source.unsplash.com/300x300/?computer"
+    "https://source.unsplash.com/300x300/?computer",
+    "https://source.unsplash.com/300x300/?fps",
+    "https://source.unsplash.com/300x300/?code",
+    "https://source.unsplash.com/300x300/?holiday",
+    "https://source.unsplash.com/300x300/?music",
+    "https://source.unsplash.com/300x300/?love",
+    "https://source.unsplash.com/300x300/?vietnam"
 ];
 
 function App() {
