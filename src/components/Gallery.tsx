@@ -1,4 +1,5 @@
 import React from "react";
+import {GalleryImage} from "./GalleryImage";
 
 const images: string[] = [
     "https://source.unsplash.com/300x300/?nature,water",
@@ -18,7 +19,7 @@ export const Gallery = () => {
     return (
         <div className="gallery">
             {images.map(image => (
-                <div style={{backgroundImage: `url(${image})`}} className="gallery-card"></div>
+                <GalleryImage image={image}></GalleryImage>
             ))}
         </div>
     );
