@@ -1,0 +1,11 @@
+@import "./Gallery.css";
+body {
+    background-color: white;
+    padding: 50px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
