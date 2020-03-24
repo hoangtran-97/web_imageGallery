@@ -1,0 +1,20 @@
+.header {
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+    grid-area: header;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+#upload {
+    background-color: #424242;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 500ms;
+}
+#upload:hover {
+    box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em, rgba(2, 8, 20, 0.08) 0px 0.175em 0.5em;
+    transform: translateY(-3px) scale(1.05);
+}
