@@ -1,4 +1,5 @@
 @import "./Gallery.css";
+@import "./Header.css";
 body {
     background-color: white;
     padding: 10px;
@@ -15,14 +16,4 @@ body {
     gap: 20px;
     grid-template-columns: 100px, 1fr;
     grid-template-areas: "header" "gallery";
-}
-
-.header {
-    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-    grid-area: header;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
 }
