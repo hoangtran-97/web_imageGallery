@@ -3,16 +3,15 @@ const vibrant = require("node-vibrant");
 interface GalleryImageProps {
     image: {id: number; link: string};
     key: string;
-    setBackgroundColor: Function;
-    setColor: Function;
 }
-export const GalleryImage = ({image, setBackgroundColor, setColor}: GalleryImageProps) => {
+export const GalleryImage = ({image}: GalleryImageProps) => {
     const {link} = image;
     const updateColor = (link: string) => {
         vibrant.from(link).getPalette((err: any, palette: any): any => {
-            console.log(err);
-            setColor(palette.DarkVibrant.hex);
-            setBackgroundColor(palette.Vibrant.hex);
+            console.log(err, palette);
+            document.documentElement.style.setProperty("--background-color", palette.Vibrant.hex);
+            document.documentElement.style.setProperty("--sub-background-color", palette.LightVibrant.hex);
+            document.documentElement.style.setProperty("--color", palette.DarkVibrant.hex);
         });
     };
     return (

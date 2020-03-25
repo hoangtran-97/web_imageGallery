@@ -1,7 +1,13 @@
 @import "./Gallery.css";
 @import "./Header.css";
+:root {
+    --background-color: #FFFFFF;
+    --sub-background-color: #ffffff;
+    --color: #000000;
+}
+
 body {
-    background-color: white;
+    background-color: var(--background-color);
     padding: 10px;
 }
 
