@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap);
 @import "./Gallery.css";
 @import "./Header.css";
+@import "./Loading.css";
 :root {
     --background-color: #FFFFFF;
     --sub-background-color: #ffffff;
