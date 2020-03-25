@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {GalleryImage} from "./GalleryImage";
 
 interface imageObject {
@@ -16,11 +16,31 @@ const images: imageObject[] = [
     {id: 7, link: "https://source.unsplash.com/300x300/?love"}
 ];
 export const Gallery = () => {
+    const [backgroundColor, setBackgroundColor] = useState("#FFFFFFF");
+    const [color, setColor] = useState("#000000");
+    const styles = {
+        dynamic: {
+            backgroundColor: backgroundColor,
+            color: color
+        }
+    };
     return (
-        <div className="gallery">
-            {images.map(image => (
-                <GalleryImage image={image} key={image.id.toString()}></GalleryImage>
-            ))}
-        </div>
+        <>
+            <div className="header" style={styles.dynamic}>
+                <button id="upload">Upload</button>
+                <p>Firebase Gallery</p>
+                <p>Theme</p>
+            </div>
+            <div className="gallery" style={styles.dynamic}>
+                {images.map(image => (
+                    <GalleryImage
+                        image={image}
+                        key={image.id.toString()}
+                        setBackgroundColor={setBackgroundColor}
+                        setColor={setColor}
+                    ></GalleryImage>
+                ))}
+            </div>
+        </>
     );
 };
