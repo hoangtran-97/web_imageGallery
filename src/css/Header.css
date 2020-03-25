@@ -7,16 +7,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
 }
 
-#upload {
+.header-button {
     color: var(--color);
     background-color: var(--sub-background-color);
     border: none;
     transition: all 500ms;
 }
 
-#upload:hover {
+.header-button:hover {
     transform: translateY(-3px) scale(1.05);
+}
+
+#header-text {
+    font-weight: 700;
 }
