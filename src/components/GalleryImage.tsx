@@ -3,16 +3,19 @@ const vibrant = require("node-vibrant");
 interface GalleryImageProps {
     image: {id: number; link: string; title?: string};
     key: string;
+    setIsLoading: Function;
 }
-export const GalleryImage = ({image}: GalleryImageProps) => {
+export const GalleryImage = ({image, setIsLoading}: GalleryImageProps) => {
     const {link, title} = image;
-    const updateColor = (link: string) => {
-        vibrant.from(link).getPalette((err: any, palette: any): any => {
+    const updateColor = async (link: string) => {
+        setIsLoading(true);
+        await vibrant.from(link).getPalette((err: any, palette: any): any => {
             console.log(err, palette);
             document.documentElement.style.setProperty("--background-color", palette.Vibrant.hex);
             document.documentElement.style.setProperty("--sub-background-color", palette.LightVibrant.hex);
             document.documentElement.style.setProperty("--color", palette.DarkVibrant.hex);
         });
+        setIsLoading(false);
     };
     return (
         <div style={{backgroundImage: `url(${link})`}} className="gallery-card">

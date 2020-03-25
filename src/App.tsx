@@ -1,15 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import "./css/App.css";
 import {Gallery} from "./components/Gallery";
 import {Header} from "./components/Header";
 import {Loading} from "./components/Loading";
 
 function App() {
+    const [isLoading, setIsLoading] = useState(false);
     return (
         <div className="App">
             <Header></Header>
-            <Gallery></Gallery>
-            <Loading></Loading>
+            <Gallery setIsLoading={setIsLoading}></Gallery>
+            <Loading isLoading={isLoading}></Loading>
         </div>
     );
 }

@@ -6,6 +6,9 @@ interface imageObject {
     link: string;
     title?: string;
 }
+interface GalleryProps {
+    setIsLoading: Function;
+}
 const images: imageObject[] = [
     {id: 0, link: "https://source.unsplash.com/300x300/?nature,water", title: "blabla bbalbla"},
     {id: 1, link: "https://source.unsplash.com/300x300/?thunder"},
@@ -16,11 +19,11 @@ const images: imageObject[] = [
     {id: 6, link: "https://source.unsplash.com/300x300/?computer"},
     {id: 7, link: "https://source.unsplash.com/300x300/?love"}
 ];
-export const Gallery = () => {
+export const Gallery = ({setIsLoading}: GalleryProps) => {
     return (
         <div className="gallery">
             {images.map(image => (
-                <GalleryImage image={image} key={image.id.toString()}></GalleryImage>
+                <GalleryImage image={image} key={image.id.toString()} setIsLoading={setIsLoading}></GalleryImage>
             ))}
         </div>
     );
