@@ -5,7 +5,12 @@ interface LoadingProps {
 }
 export const Loading = ({isLoading}: LoadingProps) => {
     return (
-        <Modal isOpen={isLoading} className="loading-modal" overlayClassName="loading-modal-overlay">
+        <Modal
+            isOpen={isLoading}
+            className="loading-modal"
+            overlayClassName="loading-modal-overlay"
+            ariaHideApp={false}
+        >
             <div className="sk-folding-cube">
                 <div className="sk-cube1 sk-cube"></div>
                 <div className="sk-cube2 sk-cube"></div>
