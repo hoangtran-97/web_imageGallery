@@ -1,11 +1,11 @@
 import React from "react";
 const vibrant = require("node-vibrant");
 interface GalleryImageProps {
-    image: {id: number; link: string};
+    image: {id: number; link: string; info?: string};
     key: string;
 }
 export const GalleryImage = ({image}: GalleryImageProps) => {
-    const {link} = image;
+    const {link, info} = image;
     const updateColor = (link: string) => {
         vibrant.from(link).getPalette((err: any, palette: any): any => {
             console.log(err, palette);
@@ -15,6 +15,14 @@ export const GalleryImage = ({image}: GalleryImageProps) => {
         });
     };
     return (
-        <div style={{backgroundImage: `url(${link})`}} className="gallery-card" onClick={() => updateColor(link)}></div>
+        <div style={{backgroundImage: `url(${link})`}} className="gallery-card">
+            {info ? <p id="gallery-info">{info}</p> : null}
+            <div id="gallery-button-container">
+                <button className="gallery-button" onClick={() => updateColor(link)}>
+                    Change Theme
+                </button>
+                <button className="gallery-button">Download</button>
+            </div>
+        </div>
     );
 };
