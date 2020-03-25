@@ -1,6 +1,6 @@
 import React from "react";
 import {GalleryImage} from "./GalleryImage";
-
+import {FaArrowAltCircleUp} from "react-icons/fa";
 interface imageObject {
     id: number;
     link: string;
@@ -21,10 +21,15 @@ const images: imageObject[] = [
 ];
 export const Gallery = ({setIsLoading}: GalleryProps) => {
     return (
-        <div className="gallery">
-            {images.map(image => (
-                <GalleryImage image={image} key={image.id.toString()} setIsLoading={setIsLoading}></GalleryImage>
-            ))}
-        </div>
+        <>
+            <div className="gallery" id="gallery">
+                {images.map(image => (
+                    <GalleryImage image={image} key={image.id.toString()} setIsLoading={setIsLoading}></GalleryImage>
+                ))}
+            </div>
+            <a href="#gallery">
+                <FaArrowAltCircleUp id="gallery-to-top"></FaArrowAltCircleUp>
+            </a>
+        </>
     );
 };
