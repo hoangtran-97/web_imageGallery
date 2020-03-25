@@ -4,10 +4,10 @@ import {GalleryImage} from "./GalleryImage";
 interface imageObject {
     id: number;
     link: string;
-    info?: string;
+    title?: string;
 }
 const images: imageObject[] = [
-    {id: 0, link: "https://source.unsplash.com/300x300/?nature,water", info: "blabla bbalbla"},
+    {id: 0, link: "https://source.unsplash.com/300x300/?nature,water", title: "blabla bbalbla"},
     {id: 1, link: "https://source.unsplash.com/300x300/?thunder"},
     {id: 2, link: "https://source.unsplash.com/300x300/?game"},
     {id: 3, link: "https://source.unsplash.com/300x300/?code"},

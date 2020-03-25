@@ -40,11 +40,11 @@
     opacity: 0;
 }
 
-.gallery-card:hover .gallery-button, .gallery-card:hover #gallery-info {
+.gallery-card:hover .gallery-button, .gallery-card:hover #gallery-title {
     opacity: 1;
 }
 
-#gallery-info {
+#gallery-title {
     color: white;
     transition: all 500ms;
     opacity: 0;
