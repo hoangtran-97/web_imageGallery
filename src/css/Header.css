@@ -19,6 +19,7 @@
     border: none;
     transition: all 500ms;
     font-size: 1.01rem;
+    outline: none;
 }
 
 .header-button:hover {
