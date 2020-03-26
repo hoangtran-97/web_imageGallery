@@ -16,7 +16,12 @@ export const Upload = () => {
         firebase
             .storage()
             .ref(`images/${filename}`)
-            .put(image);
+            .put(image)
+            .on("state_changed", snapshot => {
+                // progrss function ....
+                const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                console.log(progress);
+            });
     };
     return (
         <div>
