@@ -23,7 +23,9 @@ export const Loading = ({isLoading, progress}: LoadingProps) => {
                 <div className="sk-cube4 sk-cube"></div>
                 <div className="sk-cube3 sk-cube"></div>
             </div>
-            <Line percent={progress} strokeWidth={4} strokeColor={loadingColor ? loadingColor : "#000000"} />
+            {progress === 0 ? null : (
+                <Line percent={progress} strokeWidth={4} strokeColor={loadingColor ? loadingColor : "#000000"} />
+            )}
         </Modal>
     );
 };
