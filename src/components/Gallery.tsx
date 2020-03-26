@@ -33,7 +33,6 @@ export const Gallery = ({setIsLoading, isUpdating}: GalleryProps) => {
             .getDownloadURL()
             .then((url: any) => {
                 if (!imageLinks.includes(url)) {
-                    console.log("false");
                     setImageLinks(imageLinks => [...imageLinks, url]);
                 }
             })
