@@ -1,30 +1,47 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {GalleryImage} from "./GalleryImage";
 import {FaArrowAltCircleUp} from "react-icons/fa";
-interface imageObject {
-    id: number;
-    link: string;
-    title?: string;
-}
+import firebase from "./Firebase";
 interface GalleryProps {
     setIsLoading: Function;
 }
-const images: imageObject[] = [
-    {id: 0, link: "https://source.unsplash.com/300x300/?nature,water", title: "blabla bbalbla"},
-    {id: 1, link: "https://source.unsplash.com/300x300/?thunder"},
-    {id: 2, link: "https://source.unsplash.com/300x300/?game"},
-    {id: 3, link: "https://source.unsplash.com/300x300/?code"},
-    {id: 4, link: "https://source.unsplash.com/300x300/?mac"},
-    {id: 5, link: "https://source.unsplash.com/300x300/?gamer"},
-    {id: 6, link: "https://source.unsplash.com/300x300/?computer"},
-    {id: 7, link: "https://source.unsplash.com/300x300/?love"}
-];
+
 export const Gallery = ({setIsLoading}: GalleryProps) => {
+    const [imageLinks, setImageLinks] = useState(["https://source.unsplash.com/300x300/?nature,water"]);
+    useEffect(() => {
+        checkStore();
+    }, []);
+    const checkStore = () => {
+        console.log("checked");
+
+        const storageRef = firebase.storage().ref("images");
+        storageRef
+            .listAll()
+            .then(function(result) {
+                result.items.forEach(imageRef => {
+                    saveLinks(imageRef);
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
+    const saveLinks = (imageRef: any) => {
+        imageRef
+            .getDownloadURL()
+            .then((url: any) => {
+                setImageLinks(imageLinks => [...imageLinks, url]);
+            })
+            .catch((error: any) => {
+                console.log(error);
+            });
+    };
     return (
         <>
             <div className="gallery" id="gallery">
-                {images.map(image => (
-                    <GalleryImage image={image} key={image.id.toString()} setIsLoading={setIsLoading}></GalleryImage>
+                {imageLinks.map((image, index) => (
+                    <GalleryImage image={image} key={index} setIsLoading={setIsLoading}></GalleryImage>
                 ))}
             </div>
             <a href="#gallery">

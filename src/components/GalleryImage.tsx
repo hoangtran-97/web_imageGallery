@@ -1,15 +1,16 @@
 import React from "react";
 const vibrant = require("node-vibrant");
 interface GalleryImageProps {
-    image: {id: number; link: string; title?: string};
-    key: string;
+    image: string;
+    key: number;
     setIsLoading: Function;
 }
 export const GalleryImage = ({image, setIsLoading}: GalleryImageProps) => {
-    const {link, title} = image;
     const updateColor = async (link: string) => {
         setIsLoading(true);
-        await vibrant.from(link).getPalette((err: any, palette: any): any => {
+        console.log("link", link);
+
+        await vibrant.from(`https://cors-anywhere.herokuapp.com/${link}`).getPalette((err: any, palette: any): any => {
             console.log(err);
             document.documentElement.style.setProperty("--background-color", palette.Vibrant.hex);
             document.documentElement.style.setProperty("--sub-background-color", palette.LightVibrant.hex);
@@ -18,10 +19,9 @@ export const GalleryImage = ({image, setIsLoading}: GalleryImageProps) => {
         setIsLoading(false);
     };
     return (
-        <div style={{backgroundImage: `url(${link})`}} className="gallery-card">
-            {title ? <p id="gallery-title">{title}</p> : null}
+        <div style={{backgroundImage: `url(${image})`}} className="gallery-card">
             <div id="gallery-button-container">
-                <button className="gallery-button" onClick={() => updateColor(link)}>
+                <button className="gallery-button" onClick={() => updateColor(image)}>
                     Change Theme
                 </button>
                 <button className="gallery-button">Download</button>
