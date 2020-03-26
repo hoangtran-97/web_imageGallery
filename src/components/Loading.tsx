@@ -2,8 +2,9 @@ import React from "react";
 import Modal from "react-modal";
 interface LoadingProps {
     isLoading: boolean;
+    progress: number;
 }
-export const Loading = ({isLoading}: LoadingProps) => {
+export const Loading = ({isLoading, progress}: LoadingProps) => {
     return (
         <Modal
             isOpen={isLoading}
@@ -17,6 +18,7 @@ export const Loading = ({isLoading}: LoadingProps) => {
                 <div className="sk-cube4 sk-cube"></div>
                 <div className="sk-cube3 sk-cube"></div>
             </div>
+            <p>{progress}</p>
         </Modal>
     );
 };

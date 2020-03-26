@@ -7,12 +7,13 @@ import {Upload} from "./components/Upload";
 
 function App() {
     const [isLoading, setIsLoading] = useState(false);
+    const [progress, setProgress] = useState(0);
     return (
         <div className="App">
             <Header></Header>
             <Gallery setIsLoading={setIsLoading}></Gallery>
-            <Loading isLoading={isLoading}></Loading>
-            <Upload></Upload>
+            <Loading isLoading={isLoading} progress={progress}></Loading>
+            <Upload setProgress={setProgress} setIsLoading={setIsLoading}></Upload>
         </div>
     );
 }
