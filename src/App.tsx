@@ -5,7 +5,7 @@ import {Header} from "./components/Header";
 import {Loading} from "./components/Loading";
 import {Upload} from "./components/Upload";
 
-function App() {
+const App = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [progress, setProgress] = useState(0);
     return (
@@ -16,6 +16,6 @@ function App() {
             <Upload setProgress={setProgress} setIsLoading={setIsLoading}></Upload>
         </div>
     );
-}
+};
 
 export default App;

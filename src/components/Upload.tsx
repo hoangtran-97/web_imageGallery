@@ -13,11 +13,11 @@ export const Upload = ({setProgress, setIsLoading}: UploadProps) => {
             setImage(file);
         }
     };
-    const uploadFirebase = (image: any) => {
+    const uploadFirebase = async (image: any) => {
         setIsLoading(true);
         const ext = image.name.split(".").pop(); //Extract extension
         const filename = `${uuid()}.${ext}`; //Unique name
-        firebase
+        await firebase
             .storage()
             .ref(`images/${filename}`)
             .put(image)
@@ -27,6 +27,7 @@ export const Upload = ({setProgress, setIsLoading}: UploadProps) => {
                 setProgress(progress);
                 if (progress === 100) {
                     setIsLoading(false);
+                    setProgress(0);
                 }
             });
     };
