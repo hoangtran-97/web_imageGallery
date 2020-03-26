@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import "./css/App.css";
 import {Gallery} from "./components/Gallery";
 import {Header} from "./components/Header";
@@ -9,17 +9,19 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [progress, setProgress] = useState(0);
     const [uploadModalOpen, setUploadModalOpen] = useState(false);
-
+    const [isUpdating, setUpdating] = useState(false);
     return (
         <div className="App">
             <Header setUploadModalOpen={setUploadModalOpen}></Header>
-            <Gallery setIsLoading={setIsLoading}></Gallery>
+            <Gallery setIsLoading={setIsLoading} isUpdating={isUpdating}></Gallery>
             <Loading isLoading={isLoading} progress={progress}></Loading>
             <Upload
                 setProgress={setProgress}
                 setIsLoading={setIsLoading}
                 uploadModalOpen={uploadModalOpen}
                 setUploadModalOpen={setUploadModalOpen}
+                isUpdating={isUpdating}
+                setUpdating={setUpdating}
             ></Upload>
         </div>
     );

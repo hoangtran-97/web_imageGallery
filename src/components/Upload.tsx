@@ -7,9 +7,18 @@ interface UploadProps {
     setProgress: Function;
     setIsLoading: Function;
     uploadModalOpen: boolean;
+    isUpdating: boolean;
     setUploadModalOpen: Function;
+    setUpdating: Function;
 }
-export const Upload = ({setProgress, setIsLoading, uploadModalOpen, setUploadModalOpen}: UploadProps) => {
+export const Upload = ({
+    setProgress,
+    setIsLoading,
+    uploadModalOpen,
+    isUpdating,
+    setUploadModalOpen,
+    setUpdating
+}: UploadProps) => {
     const [image, setImage] = useState(null);
     const handleChange = (e: any) => {
         if (e.target.files[0]) {
@@ -34,6 +43,7 @@ export const Upload = ({setProgress, setIsLoading, uploadModalOpen, setUploadMod
                     if (progress === 100) {
                         setIsLoading(false);
                         setProgress(0);
+                        setUpdating(!isUpdating);
                     }
                 });
         } else {
