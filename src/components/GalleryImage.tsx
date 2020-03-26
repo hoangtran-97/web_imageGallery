@@ -8,8 +8,6 @@ interface GalleryImageProps {
 export const GalleryImage = ({image, setIsLoading}: GalleryImageProps) => {
     const updateColor = async (link: string) => {
         setIsLoading(true);
-        console.log("link", link);
-
         await vibrant.from(`https://cors-anywhere.herokuapp.com/${link}`).getPalette((err: any, palette: any): any => {
             console.log(err);
             document.documentElement.style.setProperty("--background-color", palette.Vibrant.hex);

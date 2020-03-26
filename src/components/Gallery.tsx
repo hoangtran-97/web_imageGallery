@@ -9,7 +9,6 @@ interface GalleryProps {
 
 export const Gallery = ({setIsLoading, isUpdating}: GalleryProps) => {
     const [imageLinks, setImageLinks] = useState(["https://source.unsplash.com/300x300/?nature,water"]);
-
     /*eslint-disable */
     useEffect(() => {
         checkStore();
