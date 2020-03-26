@@ -41,8 +41,7 @@
     opacity: 0;
 }
 
-.gallery-card:hover .gallery-button,
-.gallery-card:hover #gallery-title {
+.gallery-card:hover .gallery-button, .gallery-card:hover #gallery-title {
     opacity: 1;
 }
 
@@ -61,8 +60,9 @@
     position: absolute;
     bottom: 15px;
 }
+
 #gallery-to-top {
-    color: var(--sub-background-color);
+    color: var(--color);
     width: 35px;
     height: 35px;
     position: fixed;

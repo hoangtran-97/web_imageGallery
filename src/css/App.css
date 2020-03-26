@@ -2,12 +2,12 @@
 @import "./Gallery.css";
 @import "./Header.css";
 @import "./Loading.css";
-
 :root {
     --background-color: #ffffff;
-    --sub-background-color: #bbdefb;
+    --sub-background-color: #ffffff;
     --color: #000000;
 }
+
 html {
     scroll-behavior: smooth;
 }
