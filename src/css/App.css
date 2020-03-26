@@ -2,6 +2,7 @@
 @import "./Gallery.css";
 @import "./Header.css";
 @import "./Loading.css";
+@import "./Upload.css";
 :root {
     --background-color: #ffffff;
     --sub-background-color: #ffffff;

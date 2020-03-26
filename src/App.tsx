@@ -8,12 +8,18 @@ import {Upload} from "./components/Upload";
 const App = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [progress, setProgress] = useState(0);
+    const [uploadModalOpen, setUploadModalOpen] = useState(false);
     return (
         <div className="App">
-            <Header></Header>
+            <Header setUploadModalOpen={setUploadModalOpen}></Header>
             <Gallery setIsLoading={setIsLoading}></Gallery>
             <Loading isLoading={isLoading} progress={progress}></Loading>
-            <Upload setProgress={setProgress} setIsLoading={setIsLoading}></Upload>
+            <Upload
+                setProgress={setProgress}
+                setIsLoading={setIsLoading}
+                uploadModalOpen={uploadModalOpen}
+                setUploadModalOpen={setUploadModalOpen}
+            ></Upload>
         </div>
     );
 };
