@@ -8,7 +8,6 @@ interface LoadingProps {
 }
 export const Loading = ({isLoading, progress}: LoadingProps) => {
     const loadingColor = document.documentElement.style.getPropertyValue("--color");
-    console.log(loadingColor);
 
     return (
         <Modal

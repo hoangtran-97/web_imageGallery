@@ -9,14 +9,13 @@ interface GalleryProps {
 
 export const Gallery = ({setIsLoading, isUpdating}: GalleryProps) => {
     const [imageLinks, setImageLinks] = useState(["https://source.unsplash.com/300x300/?nature,water"]);
+
     /*eslint-disable */
     useEffect(() => {
         checkStore();
     }, [isUpdating]);
     /*eslint-enable */
     const checkStore = () => {
-        console.log("checked");
-
         const storageRef = firebase.storage().ref("images");
         storageRef
             .listAll()
@@ -34,12 +33,16 @@ export const Gallery = ({setIsLoading, isUpdating}: GalleryProps) => {
         imageRef
             .getDownloadURL()
             .then((url: any) => {
-                setImageLinks(imageLinks => [...imageLinks, url]);
+                if (!imageLinks.includes(url)) {
+                    console.log("false");
+                    setImageLinks(imageLinks => [...imageLinks, url]);
+                }
             })
             .catch((error: any) => {
                 console.log(error);
             });
     };
+
     return (
         <>
             <div className="gallery" id="gallery">
