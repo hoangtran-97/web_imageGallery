@@ -22,7 +22,12 @@ export const GalleryImage = ({image, setIsLoading}: GalleryImageProps) => {
                 <button className="gallery-button" onClick={() => updateColor(image)}>
                     Change Theme
                 </button>
-                <button className="gallery-button">Download</button>
+                <button className="gallery-button">
+                    {" "}
+                    <a href={image} download>
+                        Download
+                    </a>
+                </button>
             </div>
         </div>
     );

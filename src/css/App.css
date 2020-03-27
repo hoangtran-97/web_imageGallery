@@ -25,7 +25,12 @@ body {
     margin: 0;
     padding: 0;
 }
-
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: var(--color);
+}
 .App {
     display: grid;
     gap: 20px;
