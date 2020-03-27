@@ -1,27 +1,66 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./css/App.css";
 import {Gallery} from "./components/Gallery";
 import {Header} from "./components/Header";
 import {Loading} from "./components/Loading";
 import {Upload} from "./components/Upload";
-
+import firebase from "./components/Firebase";
+let wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const App = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [progress, setProgress] = useState(0);
     const [uploadModalOpen, setUploadModalOpen] = useState(false);
-    const [isUpdating, setUpdating] = useState(false);
+    const [imageLinks, setImageLinks] = useState(["https://source.unsplash.com/300x300/?nature,water"]);
+    /*eslint-disable */
+    useEffect(() => {
+        checkStore();
+    }, []);
+    useEffect(() => {}, [imageLinks]);
+    /*eslint-enable */
+
+    const checkStore = async () => {
+        console.log("started checking store");
+        await wait(2000);
+        //Bug: storageRef does not update quick_enough, as far as I know, this is firebase fail to return the up-to-date result
+        const storageRef = firebase.storage().ref("images");
+        storageRef
+            .listAll()
+            .then(async result => {
+                const data = await result;
+                console.log("Found items", data);
+
+                data.items.forEach(imageRef => {
+                    saveLinks(imageRef);
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
+    const saveLinks = (imageRef: any) => {
+        imageRef
+            .getDownloadURL()
+            .then((url: any) => {
+                if (!imageLinks.includes(url)) {
+                    setImageLinks(imageLinks => [...imageLinks, url]);
+                }
+            })
+            .catch((error: any) => {
+                console.log(error);
+            });
+    };
     return (
         <div className="App">
             <Header setUploadModalOpen={setUploadModalOpen}></Header>
-            <Gallery setIsLoading={setIsLoading} isUpdating={isUpdating}></Gallery>
+            <Gallery setIsLoading={setIsLoading} imageLinks={imageLinks}></Gallery>
             <Loading isLoading={isLoading} progress={progress}></Loading>
             <Upload
                 setProgress={setProgress}
                 setIsLoading={setIsLoading}
                 uploadModalOpen={uploadModalOpen}
                 setUploadModalOpen={setUploadModalOpen}
-                isUpdating={isUpdating}
-                setUpdating={setUpdating}
+                checkStore={checkStore}
             ></Upload>
         </div>
     );
