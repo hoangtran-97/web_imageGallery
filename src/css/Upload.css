@@ -12,6 +12,7 @@
     box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
     outline: none;
     position: relative;
+    z-index: 11;
 }
 
 .upload-modal-overlay {
@@ -24,6 +25,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(68, 62, 62, 0.7);
+    z-index: 10;
 }
 
 #upload-upload {
