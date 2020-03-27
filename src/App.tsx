@@ -19,17 +19,19 @@ const App = () => {
     /*eslint-enable */
 
     const checkStore = async () => {
+        setIsLoading(true);
         console.log("started checking store");
         await wait(2000);
         //Bug: storageRef does not update quick_enough, as far as I know, this is firebase fail to return the up-to-date result
         const storageRef = firebase.storage().ref("images");
         storageRef
             .listAll()
-            .then(async result => {
-                const data = await result;
-                console.log("Found items", data);
-
-                data.items.forEach(imageRef => {
+            .then(result => {
+                console.log("Found items", result);
+                if (result.items.length === 0) {
+                    setIsLoading(false);
+                }
+                result.items.forEach(imageRef => {
                     saveLinks(imageRef);
                 });
             })
@@ -45,6 +47,7 @@ const App = () => {
                 if (!imageLinks.includes(url)) {
                     setImageLinks(imageLinks => [...imageLinks, url]);
                 }
+                setIsLoading(false);
             })
             .catch((error: any) => {
                 console.log(error);
