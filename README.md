@@ -1,5 +1,7 @@
 # Firebase Gallery 
 
+Online Gallery with Dynamic theming using Firebase Storage 
+
 [Live version](https://fir-gallery-9c70e.firebaseapp.com/) - Deployed firebase hosting. 
 
 ## Getting started
