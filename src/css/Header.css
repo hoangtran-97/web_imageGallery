@@ -20,15 +20,16 @@
     transition: all 500ms;
     font-size: 1.01rem;
     outline: none;
-    /* display: flex;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-items: center; */
-    padding: 10px;
+    align-items: center;
 }
 
 /* .header-button:hover {
     transform: translateY(-3px) scale(1.05);
 } */
+
 .header-icon {
     width: 20px;
     height: 20px;
@@ -39,6 +40,7 @@
     font-weight: 700;
     font-size: 1.2rem;
 }
+
 @-webkit-keyframes hvr-icon-wobble-vertical {
     16.65% {
         -webkit-transform: translateY(6px);
@@ -65,6 +67,7 @@
         transform: translateY(0);
     }
 }
+
 @keyframes hvr-icon-wobble-vertical {
     16.65% {
         -webkit-transform: translateY(6px);
@@ -91,6 +94,7 @@
         transform: translateY(0);
     }
 }
+
 .hvr-icon-wobble-vertical {
     display: inline-block;
     vertical-align: middle;
@@ -100,13 +104,13 @@
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
+
 .hvr-icon-wobble-vertical .hvr-icon {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
-.hvr-icon-wobble-vertical:hover .hvr-icon,
-.hvr-icon-wobble-vertical:focus .hvr-icon,
-.hvr-icon-wobble-vertical:active .hvr-icon {
+
+.hvr-icon-wobble-vertical:hover .hvr-icon, .hvr-icon-wobble-vertical:focus .hvr-icon, .hvr-icon-wobble-vertical:active .hvr-icon {
     -webkit-animation-name: hvr-icon-wobble-vertical;
     animation-name: hvr-icon-wobble-vertical;
     -webkit-animation-duration: 1s;
