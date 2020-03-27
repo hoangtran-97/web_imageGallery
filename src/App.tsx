@@ -22,7 +22,7 @@ const App = () => {
         setIsLoading(true);
         console.log("started checking store");
         await wait(2000);
-        //Bug: storageRef does not update quick_enough, as far as I know, this is firebase fail to return the up-to-date result
+        //Bug: storageRef does not update quick_enough, as far as I know, this is firebase fail to return the up-to-date result, especially when uploading large images
         const storageRef = firebase.storage().ref("images");
         storageRef
             .listAll()
